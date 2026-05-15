@@ -9,18 +9,18 @@ final class MovieViewModel: ObservableObject {
     @Published var isLoading = false
     @Published var errorMessage: String?
 
-    private let useCase: FetchMoviesUseCase
+    private let repository: any MovieRepositoryProtocol
 
-    init(useCase: FetchMoviesUseCase) {
-        self.useCase = useCase
+    init(repository: any MovieRepositoryProtocol) {
+        self.repository = repository
     }
 
     func loadMovies() async {
         isLoading = true
         errorMessage = nil
         do {
-            async let popular = useCase.fetchPopular()
-            async let nowPlaying = useCase.fetchNowPlaying()
+            async let popular = repository.fetchPopularMovies()
+            async let nowPlaying = repository.fetchNowPlayingMovies()
             popularMovies = try await popular
             nowPlayingMovies = try await nowPlaying
         } catch {
@@ -31,7 +31,7 @@ final class MovieViewModel: ObservableObject {
 
     func fetchCredits(movieId: Int) async -> [String] {
         do {
-            return try await useCase.fetchCredits(movieId: movieId)
+            return try await repository.fetchMovieCredits(movieId: movieId)
         } catch {
             return []
         }

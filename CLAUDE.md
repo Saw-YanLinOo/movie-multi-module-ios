@@ -36,12 +36,11 @@ AppContainer (Swinject)
     │
     ├── MovieDomain (Package)        ← Domain layer (no external deps)
     │   ├── Movie                    ← Core domain model
-    │   ├── MovieRepositoryProtocol  ← Dependency inversion boundary
-    │   └── FetchMoviesUseCase       ← Single entry point for all data access
+    │   └── MovieRepositoryProtocol  ← Dependency inversion boundary
     │
     └── App target
         ├── DI/AppContainer          ← Swinject container, single source of truth
-        ├── ViewModel/MovieViewModel ← @MainActor ObservableObject, injected via @EnvironmentObject
+        ├── ViewModel/MovieViewModel ← @MainActor ObservableObject, calls repo directly, injected via @EnvironmentObject
         ├── Presentation/            ← SwiftUI views and components
         └── Models/                  ← Preview helpers (Movie+Mock, PreviewMovieRepository)
 ```

@@ -12,17 +12,15 @@ swift test --filter MovieDomainTests.<TestName>
 
 ## Purpose
 
-Pure domain layer — no external dependencies, no networking, no SwiftUI. This package defines the contract between the data and presentation layers.
+Pure domain layer — no external dependencies, no networking, no SwiftUI. Defines the contract between the data and presentation layers.
 
 ## Contents
 
-- **`Movie`** — core domain model (`Identifiable`, `Sendable`, `Hashable`). All other layers use this type; no layer should expose DTOs beyond `MovieData`.
-- **`MovieRepositoryProtocol`** — the dependency inversion boundary. `MovieData` implements it; the app and `FetchMoviesUseCase` depend on it.
-- **`FetchMoviesUseCase`** — the single entry point for all movie data access. Wraps the repository and exposes `fetchPopular()`, `fetchNowPlaying()`, `fetchCredits(movieId:)`.
+- **`Movie`** — core domain model (`Identifiable`, `Sendable`, `Hashable`). All layers use this type; DTOs never leave `MovieData`.
+- **`MovieRepositoryProtocol`** — the dependency inversion boundary. `MovieData` implements it; `MovieViewModel` depends on it directly.
 
 ## Rules
 
 - No imports other than `Foundation` (or none at all).
 - All public types must conform to `Sendable` — this package targets Swift 6.
-- `MovieRepositoryProtocol` must also conform to `Sendable`.
-- Adding a new data operation means: add method to `MovieRepositoryProtocol` → add wrapper in `FetchMoviesUseCase` → implement in `MovieRepositoryImpl` (MovieData package).
+- Adding a new data operation: add method to `MovieRepositoryProtocol` → implement in `MovieRepositoryImpl` (MovieData) → call from `MovieViewModel`.

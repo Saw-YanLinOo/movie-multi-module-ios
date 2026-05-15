@@ -19,17 +19,10 @@ final class AppContainer {
         }
         .inObjectScope(.container)
 
-        // MARK: - Domain Layer
-        container.register(FetchMoviesUseCase.self) { r in
-            FetchMoviesUseCase(
-                repository: r.resolve(MovieRepositoryProtocol.self)!
-            )
-        }
-
         // MARK: - ViewModel
         container.register(MovieViewModel.self) { r in
             MovieViewModel(
-                useCase: r.resolve(FetchMoviesUseCase.self)!
+                repository: r.resolve(MovieRepositoryProtocol.self)!
             )
         }
         .inObjectScope(.container)
@@ -40,6 +33,6 @@ final class AppContainer {
     }
 
     static func makePreview() -> MovieViewModel {
-        MovieViewModel(useCase: FetchMoviesUseCase(repository: PreviewMovieRepository()))
+        MovieViewModel(repository: PreviewMovieRepository())
     }
 }
