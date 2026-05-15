@@ -6,12 +6,9 @@ A SwiftUI movie browsing app with a clean dark UI, featured carousel, now showin
 
 ## 📱 Screenshots
 
-<table border="0" cellspacing="0" cellpadding="10">
-  <tr>
-    <td valign="top"><img src="screenshots/home.jpeg" width="220" /></td>
-    <td valign="top"><img src="screenshots/detail.jpeg" width="220" /></td>
-  </tr>
-</table>
+<img src="screenshots/home.jpeg" width="190" />
+&nbsp;&nbsp;
+<img src="screenshots/detail.jpeg" width="190" />
 
 ---
 
