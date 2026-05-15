@@ -3,7 +3,7 @@ import SwiftUI
 struct HomeView: View {
     let movies = MockMovie.all
     let featuredMovies = [MockMovie.featured] + Array(MockMovie.all.prefix(3))
-    @State private var featuredIndex = 0
+    @State private var featuredIndex: Int? = 0
     @State private var cardWidth: CGFloat = 300
 
     var body: some View {
@@ -22,12 +22,13 @@ struct HomeView: View {
                                                 .frame(width: geo.size.width)
                                         }
                                         .buttonStyle(.plain)
-                                        .onAppear { featuredIndex = index }
+                                        .id(index)
                                     }
                                 }
                                 .scrollTargetLayout()
                             }
                             .scrollTargetBehavior(.viewAligned)
+                            .scrollPosition(id: $featuredIndex)
                             .contentMargins(.horizontal, 16, for: .scrollContent)
 
                             .frame(height: 280)
@@ -35,8 +36,8 @@ struct HomeView: View {
                             HStack(spacing: 6) {
                                 ForEach(0..<featuredMovies.count, id: \.self) { i in
                                     Capsule()
-                                        .fill(i == featuredIndex ? Color.yellow : Color.gray.opacity(0.3))
-                                        .frame(width: i == featuredIndex ? 20 : 6, height: 6)
+                                        .fill(i == (featuredIndex ?? 0) ? Color.yellow : Color.gray.opacity(0.3))
+                                        .frame(width: i == (featuredIndex ?? 0) ? 20 : 6, height: 6)
                                         .animation(.easeInOut, value: featuredIndex)
                                 }
                             }
