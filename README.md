@@ -7,9 +7,9 @@ A SwiftUI movie browsing app with a clean dark UI, featured carousel, now showin
 ## 📱 Screenshots
 
 <p align="center">
-  <img src="screenshots/home.png" width="300" alt="Home Screen" />
+  <img src="screenshots/home.jpeg" width="300" alt="Home Screen" />
   &nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="screenshots/detail.png" width="300" alt="Detail Screen" />
+  <img src="screenshots/detail.jpeg" width="300" alt="Detail Screen" />
 </p>
 <p align="center">
   <em>Home</em>
