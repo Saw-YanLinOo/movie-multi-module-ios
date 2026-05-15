@@ -3,7 +3,7 @@ import MovieDomain
 
 struct MovieDetailView: View {
     let movie: Movie
-    @EnvironmentObject private var viewModel: MovieViewModel
+    @StateObject private var viewModel = AppContainer.shared.makeMovieViewModel()
     @State private var cast: [String] = []
 
     var body: some View {
@@ -165,6 +165,5 @@ struct MovieDetailView: View {
 #Preview {
     NavigationStack {
         MovieDetailView(movie: .preview)
-            .environmentObject(AppContainer.makePreview())
     }
 }

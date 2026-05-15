@@ -2,7 +2,7 @@ import SwiftUI
 import MovieDomain
 
 struct HomeView: View {
-    @EnvironmentObject private var viewModel: MovieViewModel
+    @StateObject private var viewModel = AppContainer.shared.makeMovieViewModel()
     @State private var featuredIndex: Int? = 0
 
     private var featuredMovies: [Movie] { Array(viewModel.nowPlayingMovies.prefix(4)) }
@@ -120,5 +120,4 @@ private struct SectionHeader: View {
 
 #Preview {
     HomeView()
-        .environmentObject(AppContainer.makePreview())
 }

@@ -2,27 +2,25 @@ import Foundation
 
 struct MovieAPIService: Sendable {
     private let apiKey: String
-    private let baseURL = "https://api.themoviedb.org/3"
-    static let imageBaseURL = "https://image.tmdb.org/t/p/w500"
 
     init(apiKey: String) {
         self.apiKey = apiKey
     }
 
     func fetchPopularMovies() async throws -> MovieListResponse {
-        try await fetch(endpoint: "/movie/popular")
+        try await fetch(endpoint: APIConstants.Endpoint.popularMovies)
     }
 
     func fetchNowPlayingMovies() async throws -> MovieListResponse {
-        try await fetch(endpoint: "/movie/now_playing")
+        try await fetch(endpoint: APIConstants.Endpoint.nowPlayingMovies)
     }
 
     func fetchMovieCredits(movieId: Int) async throws -> CreditsResponse {
-        try await fetch(endpoint: "/movie/\(movieId)/credits")
+        try await fetch(endpoint: APIConstants.Endpoint.movieCredits(id: movieId))
     }
 
     private func fetch<T: Decodable & Sendable>(endpoint: String) async throws -> T {
-        guard let url = URL(string: "\(baseURL)\(endpoint)?api_key=\(apiKey)") else {
+        guard let url = URL(string: "\(APIConstants.baseURL)\(endpoint)?api_key=\(apiKey)") else {
             throw URLError(.badURL)
         }
         let (data, response) = try await URLSession.shared.data(from: url)

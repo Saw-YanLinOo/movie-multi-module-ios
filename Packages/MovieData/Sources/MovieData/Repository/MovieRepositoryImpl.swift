@@ -38,7 +38,7 @@ public final class MovieRepositoryImpl: MovieRepositoryProtocol {
             rating: (dto.voteAverage * 10).rounded() / 10.0,
             year: String(dto.releaseDate.prefix(4)),
             genres: dto.genreIds.compactMap { Self.genreMap[$0] },
-            posterURL: dto.posterPath.map { MovieAPIService.imageBaseURL + $0 } ?? ""
+            posterURL: dto.posterPath.map { APIConstants.imageBaseURL + $0 } ?? ""
         )
     }
 }
