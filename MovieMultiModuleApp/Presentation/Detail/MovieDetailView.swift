@@ -1,8 +1,10 @@
 import SwiftUI
+import MovieDomain
 
 struct MovieDetailView: View {
-    let movie: MockMovie
-    @Environment(\.dismiss) private var dismiss
+    let movie: Movie
+    @EnvironmentObject private var viewModel: MovieViewModel
+    @State private var cast: [String] = []
 
     var body: some View {
         ScrollView {
@@ -43,9 +45,7 @@ struct MovieDetailView: View {
                             .font(.system(size: 22, weight: .bold))
                             .foregroundStyle(.primary)
                     }
-
                     Spacer()
-
                     HStack(spacing: 4) {
                         Image(systemName: "star.fill")
                             .foregroundStyle(.yellow)
@@ -77,9 +77,7 @@ struct MovieDetailView: View {
                                     .padding(.horizontal, 14)
                                     .padding(.vertical, 6)
                                     .background(Color.yellow.opacity(0.12))
-                                    .overlay(
-                                        Capsule().stroke(Color.yellow.opacity(0.4), lineWidth: 1)
-                                    )
+                                    .overlay(Capsule().stroke(Color.yellow.opacity(0.4), lineWidth: 1))
                                     .clipShape(Capsule())
                             }
                         }
@@ -87,8 +85,7 @@ struct MovieDetailView: View {
                     }
 
                     // Watch Now button
-                    Button {
-                    } label: {
+                    Button { } label: {
                         HStack(spacing: 8) {
                             Image(systemName: "play.fill")
                             Text("Watch Now")
@@ -115,19 +112,21 @@ struct MovieDetailView: View {
                     .padding(.horizontal, 16)
 
                     // Cast
-                    VStack(alignment: .leading, spacing: 12) {
-                        Text("Cast")
-                            .font(.system(size: 16, weight: .bold))
-                            .foregroundStyle(.primary)
-                            .padding(.horizontal, 16)
+                    if !cast.isEmpty {
+                        VStack(alignment: .leading, spacing: 12) {
+                            Text("Cast")
+                                .font(.system(size: 16, weight: .bold))
+                                .foregroundStyle(.primary)
+                                .padding(.horizontal, 16)
 
-                        ScrollView(.horizontal, showsIndicators: false) {
-                            HStack(spacing: 16) {
-                                ForEach(Array(movie.cast.enumerated()), id: \.offset) { index, name in
-                                    CastCard(name: name, index: index)
+                            ScrollView(.horizontal, showsIndicators: false) {
+                                HStack(spacing: 16) {
+                                    ForEach(Array(cast.enumerated()), id: \.offset) { index, name in
+                                        CastCard(name: name, index: index)
+                                    }
                                 }
+                                .padding(.horizontal, 16)
                             }
-                            .padding(.horizontal, 16)
                         }
                     }
 
@@ -140,10 +139,11 @@ struct MovieDetailView: View {
 
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack(spacing: 14) {
-                                ForEach(MockMovie.all) { m in
-                                    if m.id != movie.id {
+                                ForEach(viewModel.popularMovies.filter { $0.id != movie.id }) { m in
+                                    NavigationLink(destination: MovieDetailView(movie: m)) {
                                         MovieCard(movie: m)
                                     }
+                                    .buttonStyle(.plain)
                                 }
                             }
                             .padding(.horizontal, 16)
@@ -156,11 +156,15 @@ struct MovieDetailView: View {
         .background(Color(.systemGroupedBackground))
         .ignoresSafeArea(edges: .top)
         .navigationBarBackButtonHidden(false)
+        .task {
+            cast = await viewModel.fetchCredits(movieId: movie.id)
+        }
     }
 }
 
 #Preview {
     NavigationStack {
-        MovieDetailView(movie: MockMovie.featured)
+        MovieDetailView(movie: .preview)
+            .environmentObject(AppContainer.makePreview())
     }
 }

@@ -1,7 +1,8 @@
 import SwiftUI
+import MovieDomain
 
 struct MovieCard: View {
-    let movie: MockMovie
+    let movie: Movie
     var width: CGFloat = 130
     var height: CGFloat = 190
 
@@ -22,8 +23,7 @@ struct MovieCard: View {
                                     .foregroundStyle(.secondary)
                             )
                     @unknown default:
-                        Rectangle()
-                            .fill(Color(.systemGray5))
+                        Rectangle().fill(Color(.systemGray5))
                     }
                 }
                 .frame(width: width, height: height)

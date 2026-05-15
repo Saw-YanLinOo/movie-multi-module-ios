@@ -11,6 +11,7 @@
 		0428AC762FB4BA6800A25C63 /* MovieDomain in Frameworks */ = {isa = PBXBuildFile; productRef = 0428AC752FB4BA6800A25C63 /* MovieDomain */; };
 		044D822B2FB6CDFC00C196EF /* MovieData in Frameworks */ = {isa = PBXBuildFile; productRef = 044D822A2FB6CDFC00C196EF /* MovieData */; };
 		044D822E2FB6CE0600C196EF /* MovieData in Frameworks */ = {isa = PBXBuildFile; productRef = 044D822D2FB6CE0600C196EF /* MovieData */; };
+		04FED1222FB78B7B0050C457 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 04FED1212FB78B7B0050C457 /* Swinject */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +61,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				044D822B2FB6CDFC00C196EF /* MovieData in Frameworks */,
+				04FED1222FB78B7B0050C457 /* Swinject in Frameworks */,
 				0428AC732FB4BA4600A25C63 /* MovieData in Frameworks */,
 				0428AC762FB4BA6800A25C63 /* MovieDomain in Frameworks */,
 				044D822E2FB6CE0600C196EF /* MovieData in Frameworks */,
@@ -111,6 +113,7 @@
 				0428AC752FB4BA6800A25C63 /* MovieDomain */,
 				044D822A2FB6CDFC00C196EF /* MovieData */,
 				044D822D2FB6CE0600C196EF /* MovieData */,
+				04FED1212FB78B7B0050C457 /* Swinject */,
 			);
 			productName = MovieMultiModuleApp;
 			productReference = 0428AC5F2FB4B9BC00A25C63 /* MovieMultiModuleApp.app */;
@@ -143,6 +146,7 @@
 			packageReferences = (
 				044D82292FB6CDFC00C196EF /* XCLocalSwiftPackageReference "Packages/MovieDomain" */,
 				044D822C2FB6CE0600C196EF /* XCLocalSwiftPackageReference "Packages/MovieData" */,
+				04FED1202FB78B7B0050C457 /* XCRemoteSwiftPackageReference "Swinject" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 0428AC602FB4B9BC00A25C63 /* Products */;
@@ -396,6 +400,17 @@
 		};
 /* End XCLocalSwiftPackageReference section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		04FED1202FB78B7B0050C457 /* XCRemoteSwiftPackageReference "Swinject" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Swinject/Swinject";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.10.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
 		0428AC722FB4BA4600A25C63 /* MovieData */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -412,6 +427,11 @@
 		044D822D2FB6CE0600C196EF /* MovieData */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = MovieData;
+		};
+		04FED1212FB78B7B0050C457 /* Swinject */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 04FED1202FB78B7B0050C457 /* XCRemoteSwiftPackageReference "Swinject" */;
+			productName = Swinject;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

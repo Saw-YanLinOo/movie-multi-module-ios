@@ -1,7 +1,8 @@
 import SwiftUI
+import MovieDomain
 
 struct FeaturedMovieCard: View {
-    let movie: MockMovie
+    let movie: Movie
 
     var body: some View {
         GeometryReader { geo in
@@ -59,8 +60,7 @@ struct FeaturedMovieCard: View {
 
                     Spacer()
 
-                    Button {
-                    } label: {
+                    Button { } label: {
                         Image(systemName: "play.fill")
                             .font(.system(size: 16))
                             .foregroundStyle(.black)
@@ -72,7 +72,6 @@ struct FeaturedMovieCard: View {
                 .padding(16)
             }
             .frame(width: geo.size.width - 24)
-
         }
     }
 }
