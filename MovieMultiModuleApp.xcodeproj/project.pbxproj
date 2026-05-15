@@ -6,14 +6,50 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		0428AC732FB4BA4600A25C63 /* MovieData in Frameworks */ = {isa = PBXBuildFile; productRef = 0428AC722FB4BA4600A25C63 /* MovieData */; };
+		0428AC762FB4BA6800A25C63 /* MovieDomain in Frameworks */ = {isa = PBXBuildFile; productRef = 0428AC752FB4BA6800A25C63 /* MovieDomain */; };
+		044D822B2FB6CDFC00C196EF /* MovieData in Frameworks */ = {isa = PBXBuildFile; productRef = 044D822A2FB6CDFC00C196EF /* MovieData */; };
+		044D822E2FB6CE0600C196EF /* MovieData in Frameworks */ = {isa = PBXBuildFile; productRef = 044D822D2FB6CE0600C196EF /* MovieData */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		0428AC5F2FB4B9BC00A25C63 /* MovieMultiModuleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieMultiModuleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		0428AC6F2FB4B9F400A25C63 /* Exceptions for "Packages" folder in "MovieMultiModuleApp" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				MovieData,
+				MovieDomain,
+			);
+			target = 0428AC5E2FB4B9BC00A25C63 /* MovieMultiModuleApp */;
+		};
+		044D82412FB6D96C00C196EF /* Exceptions for "MovieMultiModuleApp" folder in "MovieMultiModuleApp" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 0428AC5E2FB4B9BC00A25C63 /* MovieMultiModuleApp */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		0428AC612FB4B9BC00A25C63 /* MovieMultiModuleApp */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				044D82412FB6D96C00C196EF /* Exceptions for "MovieMultiModuleApp" folder in "MovieMultiModuleApp" target */,
+			);
 			path = MovieMultiModuleApp;
+			sourceTree = "<group>";
+		};
+		0428AC6D2FB4B9D200A25C63 /* Packages */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				0428AC6F2FB4B9F400A25C63 /* Exceptions for "Packages" folder in "MovieMultiModuleApp" target */,
+			);
+			path = Packages;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -23,6 +59,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				044D822B2FB6CDFC00C196EF /* MovieData in Frameworks */,
+				0428AC732FB4BA4600A25C63 /* MovieData in Frameworks */,
+				0428AC762FB4BA6800A25C63 /* MovieDomain in Frameworks */,
+				044D822E2FB6CE0600C196EF /* MovieData in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -32,6 +72,7 @@
 		0428AC562FB4B9BC00A25C63 = {
 			isa = PBXGroup;
 			children = (
+				0428AC6D2FB4B9D200A25C63 /* Packages */,
 				0428AC612FB4B9BC00A25C63 /* MovieMultiModuleApp */,
 				0428AC602FB4B9BC00A25C63 /* Products */,
 			);
@@ -62,9 +103,14 @@
 			);
 			fileSystemSynchronizedGroups = (
 				0428AC612FB4B9BC00A25C63 /* MovieMultiModuleApp */,
+				0428AC6D2FB4B9D200A25C63 /* Packages */,
 			);
 			name = MovieMultiModuleApp;
 			packageProductDependencies = (
+				0428AC722FB4BA4600A25C63 /* MovieData */,
+				0428AC752FB4BA6800A25C63 /* MovieDomain */,
+				044D822A2FB6CDFC00C196EF /* MovieData */,
+				044D822D2FB6CE0600C196EF /* MovieData */,
 			);
 			productName = MovieMultiModuleApp;
 			productReference = 0428AC5F2FB4B9BC00A25C63 /* MovieMultiModuleApp.app */;
@@ -94,6 +140,10 @@
 			);
 			mainGroup = 0428AC562FB4B9BC00A25C63;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				044D82292FB6CDFC00C196EF /* XCLocalSwiftPackageReference "Packages/MovieDomain" */,
+				044D822C2FB6CE0600C196EF /* XCLocalSwiftPackageReference "Packages/MovieData" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 0428AC602FB4B9BC00A25C63 /* Products */;
 			projectDirPath = "";
@@ -256,6 +306,7 @@
 				DEVELOPMENT_TEAM = 948B7TYWTN;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MovieMultiModuleApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -288,6 +339,7 @@
 				DEVELOPMENT_TEAM = 948B7TYWTN;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MovieMultiModuleApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -332,6 +384,36 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		044D82292FB6CDFC00C196EF /* XCLocalSwiftPackageReference "Packages/MovieDomain" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/MovieDomain;
+		};
+		044D822C2FB6CE0600C196EF /* XCLocalSwiftPackageReference "Packages/MovieData" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/MovieData;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0428AC722FB4BA4600A25C63 /* MovieData */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MovieData;
+		};
+		0428AC752FB4BA6800A25C63 /* MovieDomain */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MovieDomain;
+		};
+		044D822A2FB6CDFC00C196EF /* MovieData */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MovieData;
+		};
+		044D822D2FB6CE0600C196EF /* MovieData */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MovieData;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 0428AC572FB4B9BC00A25C63 /* Project object */;
 }
